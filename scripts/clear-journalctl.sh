@@ -1,6 +1,8 @@
 #!/bin/bash
 #
-# This is reusable code for restarting and displaying status of a systemd server
+# This is reusable code for clearing the systemmd journal.
+#
+# NOTE: --unit according to the documentation should only clear the journal for that unit. My experience is that it clears all. YMMV.
 #
 
 function clear_journalctl() {
