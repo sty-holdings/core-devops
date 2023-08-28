@@ -4,6 +4,6 @@
 #
 
 function display_possible_failure_note() {
-  echo "NOTE: If any of the $1 commands fail on the remote instance, this script will continue to execute. You will have investigate if the error is critical."
+  echo "NOTE: If any of the $1 commands fail on the remote instance, this script will continue to execute. You will have to investigate if the error is critical."
 }
 
