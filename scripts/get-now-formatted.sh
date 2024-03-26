@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# This is reusable code for displaying common systemd commands
+# This is reusable code for setting now to the formatted date
 #
 # Copyright (c) 2022 STY-Holdings Inc
 # MIT License
@@ -19,14 +19,15 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-function display_daemon_commands() {
-  echo
-  display_spacer
-  echo "Daemon Commands:"
-  echo "-  sudo systemctl status ${SERVER_NAME}.service"
-  echo "-  sudo systemctl start ${SERVER_NAME}.service"
-  echo "-  sudo systemctl stop ${SERVER_NAME}.service"
-  echo "-  sudo systemctl restart ${SERVER_NAME}.service"
-  echo "-  sudo journalctl -u ${SERVER_NAME}.service -n 50"
-  echo
+# shellcheck disable=SC2016
+function get_now_formatted() {
+  now=$(date +$1)
 }
+
+function get_now() {
+  now=$(date)
+}
+
+# Test
+#set_now_format '%Y-%m-%d-%k-%M-%S'
+#echo $now

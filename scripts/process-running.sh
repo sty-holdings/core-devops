@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# This is reusable code for displaying common systemd commands
+# This will check if a process is running on the system
 #
 # Copyright (c) 2022 STY-Holdings Inc
 # MIT License
@@ -19,14 +19,31 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-function display_daemon_commands() {
-  echo
-  display_spacer
-  echo "Daemon Commands:"
-  echo "-  sudo systemctl status ${SERVER_NAME}.service"
-  echo "-  sudo systemctl start ${SERVER_NAME}.service"
-  echo "-  sudo systemctl stop ${SERVER_NAME}.service"
-  echo "-  sudo systemctl restart ${SERVER_NAME}.service"
-  echo "-  sudo journalctl -u ${SERVER_NAME}.service -n 50"
-  echo
+set -eo pipefail
+
+# shellcheck disable=SC2034
+# shellcheck disable=SC2154
+function process_running() {
+  local identity=$1
+  local user=$2
+  local dns_ip=$3
+  local process_name=$4
+  local exclude_string=$5
+
+#  echo "identity=$identity"
+#  echo "user=$user"
+#  echo "dns_ip=$dns_ip"
+#  echo "process_name=$process_name"
+#  echo "exclude_string=$exclude_string"
+
+  ssh $identity $user@$dns_ip "ps aux > /tmp/processes.tmp"
+  find_string_exclude_string_in_remote_file "$identity" $user $dns_ip $process_name $exclude_string '/tmp/processes.tmp'
+  process_running_result=$find_string_in_remote_file_result
 }
+
+# Test
+#. /Users/syacko/workspace/styh-dev/src/albert/core/devops/scripts/find-string-in-file.sh
+#process_running "-i /Users/syacko/.ssh/savup-local-0030" savup savup-local-0030.savup.com 'nats-server'
+#echo "\$process_running_result=$process_running_result"
+#process_running "-i /Users/syacko/.ssh/savup-local-0030" savup savup-local-0030.savup.com 'sshd:'
+#echo "\$process_running_result=$process_running_result"

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# This is reusable code for displaying common systemd commands
+# This is reusable code for building the ssh identity filename
 #
 # Copyright (c) 2022 STY-Holdings Inc
 # MIT License
@@ -19,14 +19,20 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-function display_daemon_commands() {
-  echo
-  display_spacer
-  echo "Daemon Commands:"
-  echo "-  sudo systemctl status ${SERVER_NAME}.service"
-  echo "-  sudo systemctl start ${SERVER_NAME}.service"
-  echo "-  sudo systemctl stop ${SERVER_NAME}.service"
-  echo "-  sudo systemctl restart ${SERVER_NAME}.service"
-  echo "-  sudo journalctl -u ${SERVER_NAME}.service -n 50"
-  echo
+# shellcheck disable=SC2034
+function build_ssh_identity_filename() {
+  local ssh_user=$1
+  local local_user_home_directory=$2
+  local environment_alias=$3
+  local instance_number=$4
+
+  export IDENTITY_FILENAME="$local_user_home_directory/.ssh/$ssh_user-$environment_alias-$instance_number"
 }
+
+# Test
+#export WORKING_AS=savup
+#export LOCAL_USER_HOME_DIRECTORY=/Users/syacko
+#export ENVIRONMENT_ALIAS='lcl'
+#export INSTANCE_NUMBER='0030'
+#build_ssh_identity_filename $WORKING_AS $LOCAL_USER_HOME_DIRECTORY $ENVIRONMENT_ALIAS $INSTANCE_NUMBER
+#echo "\$IDENTITY_FILENAME=$IDENTITY_FILENAME"
