@@ -25,4 +25,4 @@ function install_public_key() {
 }
 
 # Test
-install_public_key /Users/syacko/.ssh/savup-local.pub root 154.12.225.56
+#install_public_key /Users/syacko/.ssh/savup-local.pub root 154.12.225.56
