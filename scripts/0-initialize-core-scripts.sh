@@ -44,7 +44,7 @@ set -eo pipefail
 . core-devops/scripts/process-running.sh
 . core-devops/scripts/rebuild-ssh-add.sh
 . core-devops/scripts/restart-system.sh
-. core-devops/scripts/set-variables.sh.sh
+. core-devops/scripts/set-variables.sh
 . core-devops/scripts/validate-AWS-creds.sh
 . core-devops/scripts/validate-NATS-account-user.sh
 . core-devops/scripts/validate-NATS-key.sh
