@@ -30,6 +30,7 @@ set -eo pipefail
 . core-devops/scripts/install-AWS-creds.sh
 . core-devops/scripts/install-FIREBASE-key-info.sh
 . core-devops/scripts/install-GCP-key-info.sh
+. core-devops/scripts/install-local-instance-alias.sh
 . core-devops/scripts/install-NATS-key.sh
 . core-devops/scripts/install-SENDGRID-key-info.sh
 . core-devops/scripts/install-binary.sh
@@ -38,8 +39,10 @@ set -eo pipefail
 . core-devops/scripts/install-server-user.sh
 . core-devops/scripts/install-systemd-service.sh
 . core-devops/scripts/install-tls-certs-key.sh
+. core-devops/scripts/install-tools.sh
 . core-devops/scripts/print-additional-info.sh
 . core-devops/scripts/process-running.sh
+. core-devops/scripts/rebuild-ssh-add.sh
 . core-devops/scripts/restart-system.sh
 . core-devops/scripts/set-variables.sh.sh
 . core-devops/scripts/validate-AWS-creds.sh
