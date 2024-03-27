@@ -23,10 +23,10 @@
 function build_ssh_identity_filename() {
   local ssh_user=$1
   local local_user_home_directory=$2
-  local environment_alias=$3
+  local server_environment=$3
   local instance_number=$4
 
-  export IDENTITY_FILENAME="$local_user_home_directory/.ssh/$ssh_user-$environment_alias-$instance_number"
+  export IDENTITY_FILENAME="$local_user_home_directory/.ssh/$ssh_user-$server_environment-$instance_number"
 }
 
 # Test
