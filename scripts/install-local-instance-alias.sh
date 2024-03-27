@@ -17,16 +17,16 @@ function install_local_instance_alias() {
   local file=$2
   local ssh_user=$3
 
-    echo "\$search_string=$search_string"
-    echo "\$file=$file"
-    echo "\$ssh_user=$ssh_user"
+#    echo "\$search_string=$search_string"
+#    echo "\$file=$file"
+#    echo "\$ssh_user=$ssh_user"
 
-  echo "Setting up alias to connect to remote server."
+  echo "\033[0;97m Setting up alias to connect to remote server. \033[0m"
   # shellcheck disable=SC2086
   find_string_in_file "$search_string" $file
-    echo
-    echo "\$find_string_in_file_result=$find_string_in_file_result"
-    echo
+#    echo
+#    echo "\$find_string_in_file_result=$find_string_in_file_result"
+#    echo
   # shellcheck disable=SC2154
   if [ "$find_string_in_file_result" == "missing" ]; then
     echo "alias $ssh_user-$SERVER_ENVIRONMENT-$INSTANCE_NUMBER='ssh $IDENTITY $ssh_user@$SERVER_INSTANCE_IPV4'" >>$file

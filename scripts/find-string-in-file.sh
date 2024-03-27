@@ -24,10 +24,10 @@ function find_string_in_file() {
   local search_string=$1
   local file=$2
 
-    echo
-    echo search_string=$1
-    echo file=$2
-    echo
+#    echo
+#    echo search_string=$1
+#    echo file=$2
+#    echo
 
   if grep -q "$search_string" "$file"; then
     find_string_in_file_result="found"
