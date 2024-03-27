@@ -22,10 +22,12 @@ function install_local_instance_alias() {
 #    echo "\$ssh_user=$ssh_user"
 
   echo "Setting up alias to connect to remote server."
+  # shellcheck disable=SC2086
   find_string_in_file "$search_string" $file
   #  echo
   #  echo "\$find_string_in_file_result=$find_string_in_file_result"
   #  echo
+  # shellcheck disable=SC2154
   if [ "$find_string_in_file_result" == "missing" ]; then
     echo "alias $ssh_user-$ENVIRONMENT_ALIAS-$INSTANCE_NUMBER='ssh $IDENTITY $ssh_user@$SERVER_INSTANCE_IPV4'" >>$file
   fi

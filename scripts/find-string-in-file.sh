@@ -32,6 +32,7 @@ function find_string_in_file() {
   if grep -q "$search_string" "$file"; then
     find_string_in_file_result="found"
   else
+    # shellcheck disable=SC2034
     find_string_in_file_result="missing"
   fi
 }
@@ -55,6 +56,7 @@ function find_string_in_remote_file() {
 #  echo "search_string=$search_string"
 #  echo "file=$file"
 
+  # shellcheck disable=SC2086
   find_string_in_remote_file_result=$(ssh $identity $user@$dns_ip "grep -q '$search_string' $file && echo 'found' || echo 'missing'")
 }
 
