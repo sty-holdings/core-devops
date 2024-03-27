@@ -14,7 +14,7 @@ function rebuild_ssh_add {
     exit 1
   fi
 
-  echo "\033[0;97m Clear the ssh-add directory. \033[0m"
+  echo "\033[0;97m Clear the ssh-add directory on your machine. \033[0m"
   ssh-add -D
 
   # Loop through files in the directory
