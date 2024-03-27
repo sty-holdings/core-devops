@@ -10,11 +10,11 @@ function rebuild_ssh_add {
 
   # Check if the directory exists
   if [ ! -d "$ssh_dir" ]; then
-    echo "Directory $ssh_dir does not exist."
+    echo "\033[0;97m Directory $ssh_dir does not exist. \033[0m"
     exit 1
   fi
 
-  echo "Clear the ssh-add directory."
+  echo "\033[0;97m Clear the ssh-add directory. \033[0m"
   ssh-add -D
 
   # Loop through files in the directory
@@ -24,7 +24,8 @@ function rebuild_ssh_add {
 
       # Check if the filename matches your criteria
       if [[ $filename == *-lcl-* || $filename == *-dev-* || $filename == *-prod-* ]]; then
-        echo "Processing file: $filename"
+        echo "\033[0;97m Processing file: $filename \033[0m"
+        # shellcheck disable=SC2086
         ssh-add $ssh_dir/$filename
       fi
     fi
