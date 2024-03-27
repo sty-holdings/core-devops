@@ -29,7 +29,7 @@ function install_local_instance_alias() {
   #  echo
   # shellcheck disable=SC2154
   if [ "$find_string_in_file_result" == "missing" ]; then
-    echo "alias $ssh_user-$ENVIRONMENT_ALIAS-$INSTANCE_NUMBER='ssh $IDENTITY $ssh_user@$SERVER_INSTANCE_IPV4'" >>$file
+    echo "alias $ssh_user-$SERVER_ENVIRONMENT-$INSTANCE_NUMBER='ssh $IDENTITY $ssh_user@$SERVER_INSTANCE_IPV4'" >>$file
   fi
 }
 
