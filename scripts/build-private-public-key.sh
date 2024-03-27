@@ -22,10 +22,10 @@
 # shellcheck disable=SC2016
 function build_private_public_key() {
   if [ -f $IDENTITY_FILENAME ]; then
-    echo "Backing up $IDENTITY_FILENAME to $IDENTITY_FILENAME.bkup"
+    echo "\033[0;97m Backing up $IDENTITY_FILENAME to $IDENTITY_FILENAME.bkup \033[0m"
     cp $IDENTITY_FILENAME $IDENTITY_FILENAME.bkup
   fi
-  echo "Generating private and public key at $IDENTITY_FILENAME"
+  echo "\033[0;97m Generating private and public key at $IDENTITY_FILENAME \033[0m"
   ssh-keygen -b 2048 -t rsa -f $1 -q -N "" -C "$SERVER_INSTANCE_IPV4 key pair for $WORKING_AS" <<<y >/dev/null 2>&1
 }
 

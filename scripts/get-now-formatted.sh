@@ -25,6 +25,7 @@ function get_now_formatted() {
 }
 
 function get_now() {
+  # shellcheck disable=SC2034
   now=$(date)
 }
 
