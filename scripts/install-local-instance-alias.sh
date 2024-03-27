@@ -17,9 +17,9 @@ function install_local_instance_alias() {
   local file=$2
   local ssh_user=$3
 
-#    echo "\$search_string=$search_string"
-#    echo "\$file=$file"
-#    echo "\$ssh_user=$ssh_user"
+    echo "\$search_string=$search_string"
+    echo "\$file=$file"
+    echo "\$ssh_user=$ssh_user"
 
   echo "Setting up alias to connect to remote server."
   # shellcheck disable=SC2086
