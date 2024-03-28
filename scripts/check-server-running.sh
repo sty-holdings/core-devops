@@ -17,7 +17,7 @@ function check_server_running() {
 
   display_info "Checking to see if $process_name is running."
   # shellcheck disable=SC2086
-  process_running "$IDENTITY" $WORKING_AS $INSTANCE_DNS_IPV4 $process_name 'journalctl' # Check to see if server is running on remote server
+  process_running "$IDENTITY" $WORKING_AS $SERVER_INSTANCE_IPV4 $process_name 'journalctl' # Check to see if server is running on remote server
   # shellcheck disable=SC2154
   if [ "$process_running_result" == 'found' ]; then
     if [ "$action_if" == "running" ]; then
