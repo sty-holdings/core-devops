@@ -10,7 +10,7 @@ set -eo pipefail
 function validate_system_user_parent_group() {
   if [ -z "$SYSTEM_USER_PARENT_GROUP" ]; then
     validate_system_user_parent_group_result="failed"
-    display_error "The SYSTEM_USER_PARENT_GROUP must be provided."
+    display_error "The system user parent group must be provided."
   fi
 }
 
