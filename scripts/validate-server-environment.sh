@@ -12,13 +12,10 @@ function validate_server_environment() {
 
   case "$SERVER_ENVIRONMENT" in
   local)
-    export ENVIRONMENT_ALIAS='lcl'
     ;;
   development)
-    export ENVIRONMENT_ALIAS='dev'
     ;;
   production)
-    export ENVIRONMENT_ALIAS='prod'
     ;;
   *)
     validate_server_environment_result='failed'
