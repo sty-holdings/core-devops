@@ -30,11 +30,11 @@ function process_running() {
   local process_name=$4
   local exclude_string=$5
 
-  echo "identity=$identity"
-  echo "user=$user"
-  echo "dns_ip=$dns_ip"
-  echo "process_name=$process_name"
-  echo "exclude_string=$exclude_string"
+#  echo "identity=$identity"
+#  echo "user=$user"
+#  echo "dns_ip=$dns_ip"
+#  echo "process_name=$process_name"
+#  echo "exclude_string=$exclude_string"
 
   # shellcheck disable=SC2086
   ssh $identity $user@$dns_ip "ps aux > /tmp/processes.tmp"

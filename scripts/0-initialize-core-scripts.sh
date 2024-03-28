@@ -52,4 +52,5 @@ set -eo pipefail
 . core-devops/scripts/validate-server-environment.sh
 . core-devops/scripts/validate-system-user-parent-group.sh
 . core-devops/scripts/validate-template-directory.sh
+. core-devops/scripts/validate-working-as-home-directory.sh
 . core-devops/scripts/yaml-processing.sh
