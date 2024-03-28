@@ -38,6 +38,7 @@ function install_server_user() {
   #  echo "parent_group=$parent_group"
   #  echo "login_allowed=$login_allowed"
 
+  # shellcheck disable=SC2086
   find_string_in_remote_file "$identity" $ssh_user $dns_ip $create_user '/etc/passwd'
   # shellcheck disable=SC2154
   if [ "$find_string_in_remote_file_result" == "found" ]; then
@@ -45,10 +46,12 @@ function install_server_user() {
   else
     if [ "$login_allowed" == true ]; then
       # shellcheck disable=SC2029
+      # shellcheck disable=SC2086
       install_server_user_result=$(ssh $identity $ssh_user@$dns_ip "sudo useradd --create-home --shell /bin/bash --gid $parent_group $create_user; sudo chmod 775 /home/$create_user; sudo chmod ug+s /home/$create_user; sudo passwd $create_user")
     else
       #      You can not use -gid for a user who is not able to log into the system.
       # shellcheck disable=SC2029
+      # shellcheck disable=SC2086
       install_server_user_result=$(ssh $identity $ssh_user@$dns_ip "sudo useradd --create-home --shell /usr/sbin/nologin $create_user; sudo chmod -R 775 /home/$create_user; sudo chmod ug+s /home/$create_user; sudo chgrp -R $parent_group /home/$create_user")
     fi
     if [ "$?" ]; then
