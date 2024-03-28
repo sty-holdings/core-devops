@@ -30,13 +30,13 @@ function install_server_user() {
   local parent_group=$5
   local login_allowed=$6
 
-  #  echo "install_server_user()"
-  #  echo "identity=$identity"
-  #  echo "ssh_user=$ssh_user"
-  #  echo "dns_ip=$dns_ip"
-  #  echo "create_user=$create_user"
-  #  echo "parent_group=$parent_group"
-  #  echo "login_allowed=$login_allowed"
+    echo "install_server_user()"
+    echo "identity=$identity"
+    echo "ssh_user=$ssh_user"
+    echo "dns_ip=$dns_ip"
+    echo "create_user=$create_user"
+    echo "parent_group=$parent_group"
+    echo "login_allowed=$login_allowed"
 
   # shellcheck disable=SC2086
   find_string_in_remote_file "$identity" $ssh_user $dns_ip $create_user '/etc/passwd'
