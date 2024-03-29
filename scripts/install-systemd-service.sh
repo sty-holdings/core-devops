@@ -41,14 +41,13 @@ function install_systemd_service() {
   echo server_name=$server_name
   echo install_directory=$install_directory
   echo service_user_name=$service_user_name
-  echo template_directory=$template_directory
-  echo template_filename=$template_filename
+  echo template_fqn=$template_fqn
   echo service_filename=$service_filename
   echo
 
   echo "Installing systemd service file for $server_name."
   # shellcheck disable=SC2086
-  envsubst <$template_fqn>/tmp/$service_filename
+  envsubst <$template_fqn >/tmp/$service_filename
   # shellcheck disable=SC2086
   scp $identity /tmp/$service_filename $ssh_user@$dns_ipv4:$install_directory/$service_filename
   # shellcheck disable=SC2086
