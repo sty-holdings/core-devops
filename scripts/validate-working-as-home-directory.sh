@@ -10,7 +10,7 @@ set -eo pipefail
 function validate_working_as_home_directory() {
   if [ -z "$WORKING_AS_HOME_DIRECTORY" ]; then
     validate_working_as_home_directory_result="failed"
-    display_error "The working as home directory (FQN) must be provided."
+    display_error "The WORKING_AS_HOME_DIRECTORY (FQN) must be provided."
   fi
 }
 

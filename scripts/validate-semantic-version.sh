@@ -40,6 +40,7 @@ function validate_semantic {
   if [[ $count -eq 4 ]]; then
     validate_semantic_result='ok' # Valid semantic number
   else
+    # shellcheck disable=SC2034
     validate_semantic_result='failed'
   fi
 }

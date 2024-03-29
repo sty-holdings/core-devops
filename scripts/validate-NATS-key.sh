@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # This will check the variable is set
+# Validate NATS Key is located here because it is used in more than one script.
 #
 
 set -eo pipefail
