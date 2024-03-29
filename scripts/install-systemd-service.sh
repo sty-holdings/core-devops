@@ -31,25 +31,27 @@ function install_systemd_service() {
   local server_name=$4
   export install_directory=$5 # This is a local variable, but envsubst only works with environment variable, so it must be exported.
   export service_user_name=$6 # This is a local variable, but envsubst only works with environment variable, so it must be exported.
-  local template_directory=$7
-  local template_filename=$8
-  local service_filename=$9
+  local template_fqn=$7
+  local service_filename=$8
 
-#  echo
-#  echo identity=$identity
-#  echo ssh_user=$ssh_user
-#  echo dns_ipv4=$dns_ipv4
-#  echo server_name=$server_name
-#  echo install_directory=$install_directory
-#  echo service_user_name=$service_user_name
-#  echo template_directory=$template_directory
-#  echo template_filename=$template_filename
-#  echo service_filename=$service_filename
-#  echo
+  echo
+  echo identity=$identity
+  echo ssh_user=$ssh_user
+  echo dns_ipv4=$dns_ipv4
+  echo server_name=$server_name
+  echo install_directory=$install_directory
+  echo service_user_name=$service_user_name
+  echo template_directory=$template_directory
+  echo template_filename=$template_filename
+  echo service_filename=$service_filename
+  echo
 
   echo "Installing systemd service file for $server_name."
-  envsubst <$template_directory/$template_filename >/tmp/$service_filename
+  # shellcheck disable=SC2086
+  envsubst <$template_fqn>/tmp/$service_filename
+  # shellcheck disable=SC2086
   scp $identity /tmp/$service_filename $ssh_user@$dns_ipv4:$install_directory/$service_filename
+  # shellcheck disable=SC2086
   ssh $identity $ssh_user@$dns_ipv4 "sudo mv $install_directory/$service_filename /etc/systemd/system/$service_filename; sudo chmod 755 /etc/systemd/system/$service_filename; sudo systemctl daemon-reload;"
 }
 
