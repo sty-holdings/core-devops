@@ -20,6 +20,23 @@ function install_tls_certs_key() {
   local cert_owner=$8
 
   # shellcheck disable=SC2086
+  echo identity=$identity
+  # shellcheck disable=SC2086
+  echo working_as=$working_as
+  # shellcheck disable=SC2086
+  echo server_instance_ipv4=$server_instance_ipv4
+  # shellcheck disable=SC2086
+  echo install_directory=$install_directory
+  # shellcheck disable=SC2086
+  echo tls_ca_bundle_fqn=$tls_ca_bundle_fqn
+  # shellcheck disable=SC2086
+  echo tls_cert_fqn=$tls_cert_fqn
+  # shellcheck disable=SC2086
+  echo tls_cert_key_fqn=$tls_cert_key_fqn
+  # shellcheck disable=SC2086
+  echo cert_owner=$cert_owner
+
+  # shellcheck disable=SC2086
   are_cert_settings_valid $tls_ca_bundle_fqn $tls_cert_fqn $tls_cert_key_fqn
   if [ "$are_cert_settings_valid_result" == "yes" ]; then
     . /Users/syacko/workspace/styh-dev/src/albert/core/devops/scripts/find-directory.sh
