@@ -34,16 +34,16 @@ function install_systemd_service() {
   local template_fqn=$7
   local service_filename=$8
 
-  echo
-  echo identity=$identity
-  echo ssh_user=$ssh_user
-  echo dns_ipv4=$dns_ipv4
-  echo server_name=$server_name
-  echo install_directory=$install_directory
-  echo service_user_name=$service_user_name
-  echo template_fqn=$template_fqn
-  echo service_filename=$service_filename
-  echo
+#  echo
+#  echo identity=$identity
+#  echo ssh_user=$ssh_user
+#  echo dns_ipv4=$dns_ipv4
+#  echo server_name=$server_name
+#  echo install_directory=$install_directory
+#  echo service_user_name=$service_user_name
+#  echo template_fqn=$template_fqn
+#  echo service_filename=$service_filename
+#  echo
 
   echo "Installing systemd service file for $server_name."
   # shellcheck disable=SC2086

@@ -9,28 +9,38 @@ set -eo pipefail
 # shellcheck disable=SC2154
 # shellcheck disable=SC2029
 function install_tls_certs_key() {
-  local install_directory=$1
-  local cert_owner=$2
+  # shellcheck disable=SC2086
+  local identity=$1
+  local working_as=$2
+  local server_instance_ipv4=$3
+  local install_directory=$4
+  local tls_ca_bundle_fqn=$5
+  local tls_cert_fqn=$6
+  local tls_cert_key_fqn=$7
+  local cert_owner=$8
 
-  validate_server_environment
-  if [ "$validate_server_environment_result" == "failed" ]; then
-    exit 99
-  fi
-
-  are_cert_settings_valid
+  # shellcheck disable=SC2086
+  are_cert_settings_valid $tls_ca_bundle_fqn $tls_cert_fqn $tls_cert_key_fqn
   if [ "$are_cert_settings_valid_result" == "yes" ]; then
     . /Users/syacko/workspace/styh-dev/src/albert/core/devops/scripts/find-directory.sh
-    find_remote_directory "$IDENTITY" $WORKING_AS $INSTANCE_DNS_IPV4 $install_directory .certs
+    # shellcheck disable=SC2086
+    find_remote_directory "$identity" $working_as $server_instance_ipv4 $install_directory .certs
     if [ "$find_remote_directory_result" == "missing" ]; then
       echo "Creating the $install_directory/.certs directory."
-      ssh $IDENTITY $WORKING_AS@$INSTANCE_DNS_IPV4 "mkdir $install_directory/.certs; sudo chown -R $cert_owner $install_directory/.certs; sudo chmod -R 770 $install_directory/.certs;"
+    # shellcheck disable=SC2086
+      ssh $identity $working_as@$server_instance_ipv4 "mkdir $install_directory/.certs; sudo chown -R $cert_owner $install_directory/.certs; sudo chmod -R 770 $install_directory/.certs;"
     fi
       echo "Installing certificate, CABundle, and certificate key."
-    scp $IDENTITY $CERT_DIRECTORY/$CA_BUNDLE_FILENAME $WORKING_AS@$INSTANCE_DNS_IPV4:$install_directory/.certs
-    scp $IDENTITY $CERT_DIRECTORY/$CERT_FILENAME $WORKING_AS@$INSTANCE_DNS_IPV4:$install_directory/.certs
-    scp $IDENTITY $CERT_DIRECTORY/$CERT_KEY_FILENAME $WORKING_AS@$INSTANCE_DNS_IPV4:$install_directory/.certs
-    ssh $IDENTITY $WORKING_AS@$INSTANCE_DNS_IPV4 "chmod -R 640 $install_directory/.certs/*;"
-    ssh $IDENTITY $WORKING_AS@$INSTANCE_DNS_IPV4 "sudo chown -R $cert_owner $install_directory/.certs;"
+    # shellcheck disable=SC2086
+    scp $identity $tls_ca_bundle_fqn $working_as@$server_instance_ipv4:$install_directory/.certs
+    # shellcheck disable=SC2086
+    scp $identity $tls_cert_fqn $working_as@$server_instance_ipv4:$install_directory/.certs
+    # shellcheck disable=SC2086
+    scp $identity $tls_cert_key_fqn $working_as@$server_instance_ipv4:$install_directory/.certs
+    # shellcheck disable=SC2086
+    ssh $identity $working_as@$server_instance_ipv4 "chmod -R 640 $install_directory/.certs/*;"
+    # shellcheck disable=SC2086
+    ssh $identity $working_as@$server_instance_ipv4 "sudo chown -R $cert_owner $install_directory/.certs;"
   else
     display_warning "The CERT_DIRECTORY, CA_BUNDLE_FILENAME, CERT_FILENAME, and CERT_KEY_FILENAME are not all set."
   fi
