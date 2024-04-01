@@ -20,21 +20,21 @@ function install_tls_certs_key() {
   local cert_owner=$8
 
   # shellcheck disable=SC2086
-  echo identity=$identity
+#  echo identity=$identity
   # shellcheck disable=SC2086
-  echo working_as=$working_as
+#  echo working_as=$working_as
   # shellcheck disable=SC2086
-  echo server_instance_ipv4=$server_instance_ipv4
+#  echo server_instance_ipv4=$server_instance_ipv4
   # shellcheck disable=SC2086
-  echo install_directory=$install_directory
+#  echo install_directory=$install_directory
   # shellcheck disable=SC2086
-  echo tls_ca_bundle_fqn=$tls_ca_bundle_fqn
+#  echo tls_ca_bundle_fqn=$tls_ca_bundle_fqn
   # shellcheck disable=SC2086
-  echo tls_cert_fqn=$tls_cert_fqn
+#  echo tls_cert_fqn=$tls_cert_fqn
   # shellcheck disable=SC2086
-  echo tls_cert_key_fqn=$tls_cert_key_fqn
+#  echo tls_cert_key_fqn=$tls_cert_key_fqn
   # shellcheck disable=SC2086
-  echo cert_owner=$cert_owner
+#  echo cert_owner=$cert_owner
 
   # shellcheck disable=SC2086
   are_cert_settings_valid $tls_ca_bundle_fqn $tls_cert_fqn $tls_cert_key_fqn
@@ -47,7 +47,7 @@ function install_tls_certs_key() {
     # shellcheck disable=SC2086
       ssh $identity $working_as@$server_instance_ipv4 "mkdir $install_directory/.certs; sudo chown -R $cert_owner $install_directory/.certs; sudo chmod -R 770 $install_directory/.certs;"
     fi
-      echo "Installing certificate, CABundle, and certificate key."
+    echo "Installing certificate, CABundle, and certificate key."
     # shellcheck disable=SC2086
     scp $identity $tls_ca_bundle_fqn $working_as@$server_instance_ipv4:$install_directory/.certs
     # shellcheck disable=SC2086
