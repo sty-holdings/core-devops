@@ -9,6 +9,7 @@ set -eo pipefail
 . core-devops/scripts/build-private-public-key.sh
 . core-devops/scripts/build-ssh-identity-filename.sh
 . core-devops/scripts/build-ssh-identity.sh
+. core-devops/scripts/build-ssh-identity.sh
 . core-devops/scripts/check-server-running.sh
 . core-devops/scripts/clear-journalctl.sh
 . core-devops/scripts/create-directories.sh
