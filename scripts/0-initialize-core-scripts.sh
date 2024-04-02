@@ -35,6 +35,7 @@ set -eo pipefail
 . core-devops/scripts/install-NATS-key.sh
 . core-devops/scripts/install-SENDGRID-key-info.sh
 . core-devops/scripts/install-binary.sh
+. core-devops/scripts/install-cheat-sheet.sh
 . core-devops/scripts/install-public-key.sh
 . core-devops/scripts/install-server-conf-file.sh
 . core-devops/scripts/install-server-user.sh
