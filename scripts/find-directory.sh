@@ -24,9 +24,11 @@ function find_directory() {
   local search_directory=$1
   local directory=$2
 
+  # shellcheck disable=SC2086
   if find $search_directory -type d -name "$directory" -print -quit; then
     find_directory_result="found"
   else
+    # shellcheck disable=SC2034
     find_directory_result="missing"
   fi
 }
@@ -51,6 +53,7 @@ function find_remote_directory() {
 #  echo "file=$directory"
 #  echo
 
+  # shellcheck disable=SC2034
   find_remote_directory_result=$(ssh $identity $user@$dns_ip "if [ \$(find $search_directory -type d -name $directory -print -quit) ]; then echo 'found'; else echo 'missing'; fi")
 }
 
