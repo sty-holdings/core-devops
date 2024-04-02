@@ -22,7 +22,7 @@ function install_cheat_sheet() {
   if [ "$find_remote_directory_result" == "found" ]; then
     echo "Installing $cheat_sheet_name cheat sheet."
     # shellcheck disable=SC2086
-    scp $identity ../cheat-sheet/$cheat_sheet_name $working_as@$server_instance_ipv4:/home/$system_user/docs/$cheat_sheet_name.txt
+    scp $identity ../cheat-sheet/$cheat_sheet_name.txt $working_as@$server_instance_ipv4:/home/$system_user/docs/$cheat_sheet_name.txt
   else
     echo "/home/$system_name/docs is missing."
     exit 99
