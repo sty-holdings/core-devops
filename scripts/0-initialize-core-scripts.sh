@@ -42,6 +42,7 @@ set -eo pipefail
 . core-devops/scripts/install-systemd-service.sh
 . core-devops/scripts/install-tls-certs-key.sh
 . core-devops/scripts/install-tools.sh
+. core-devops/scripts/install-utilities.sh
 . core-devops/scripts/print-additional-info.sh
 . core-devops/scripts/process-running.sh
 . core-devops/scripts/rebuild-ssh-add.sh
