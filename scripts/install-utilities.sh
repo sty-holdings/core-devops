@@ -13,10 +13,10 @@ function install_utility() {
   local user=$2
   local dns_ip=$3
 
-  echo
-  echo "\$identity=$identity"
-  echo "\$user=$user"
-  echo "\$dns_ip4=$dns_ip"
+#  echo
+#  echo "\$identity=$identity"
+#  echo "\$user=$user"
+#  echo "\$dns_ip4=$dns_ip"
 
   echo "Cloning utilities to /tmp"
   rm -rf /tmp/utilities
@@ -28,4 +28,4 @@ function install_utility() {
 }
 
 # Test
-install_utility "-i /Users/syacko/.ssh/root-local-0030" root local.sty-holdings.net
+#install_utility "-i /Users/syacko/.ssh/root-local-0030" root local.sty-holdings.net
