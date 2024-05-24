@@ -24,7 +24,7 @@ function install_utility() {
   git clone https://github.com/sty-holdings/utilities
   echo "Copying utilities to server /opt"
   # shellcheck disable=SC2086
-  scp -r $identity /tmp/utilities $user@$dns_ip:/opt
+  scp $identity /tmp/utilities $user@$dns_ip:/opt
 }
 
 # Test
