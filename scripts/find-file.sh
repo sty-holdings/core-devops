@@ -24,9 +24,11 @@ function find_file() {
   local search_directory=$1
   local file=$2
 
+  # shellcheck disable=SC2086
   if find $search_directory -type f -name "$file" -print -quit; then
     find_file="found"
   else
+    # shellcheck disable=SC2034
     find_file="missing"
   fi
 }
@@ -49,6 +51,7 @@ function find_remote_file() {
   #  echo "search_string=$search_string"
   #  echo "file=$file"
 
+  # shellcheck disable=SC2034
   find_remote_file_result=$(ssh $identity $user@$dns_ip "if [ \"\$(find $search_directory -type f -name '$file' -print -quit)\" ]; then echo 'found'; else echo 'missing'; fi")
 }
 
