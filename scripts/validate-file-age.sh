@@ -12,9 +12,9 @@ function validate_file_age() {
 
   # shellcheck disable=SC2086
   if find "$filename" -mmin +$ageinminutes -print | grep -q '.'; then
-      validate_AWS_creds_result="old"
+      validate_file_age_result="old"
   else
-      validate_AWS_creds_result="new"
+     validate_file_age_result="new"
   fi
 
 }
@@ -22,6 +22,6 @@ function validate_file_age() {
 #Test
 #touch /tmp/testfile.tmp
 #validate_file_age 5 /tmp/testfile.tmp
-#echo $validate_AWS_creds_result
+#echo $validate_file_age_result
 #validate_file_age 5 /tmp/com.avast.antitrack.Shuffler.err
-#echo $validate_AWS_creds_result
+#echo $validate_file_age_result
