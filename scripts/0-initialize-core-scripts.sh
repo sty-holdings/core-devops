@@ -49,6 +49,7 @@ set -eo pipefail
 . core-devops/scripts/restart-system.sh
 . core-devops/scripts/set-variables.sh
 . core-devops/scripts/validate-AWS-creds.sh
+. core-devops/scripts/validate-file-age.sh
 . core-devops/scripts/validate-NATS-account-user.sh
 . core-devops/scripts/validate-NATS-key.sh
 . core-devops/scripts/validate-semantic-version.sh
