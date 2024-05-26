@@ -26,7 +26,7 @@ function install_utility() {
   # shellcheck disable=SC2086
   echo "scp $identity /tmp/utilities $user@$dns_ip:/opt"
   # shellcheck disable=SC2086
-  scp $identity /tmp/utilities/bin/* $user@$dns_ip:/opt
+  scp $identity /tmp/utilities/bin/* $user@$dns_ip:/opt/utilities
 }
 
 # Test
