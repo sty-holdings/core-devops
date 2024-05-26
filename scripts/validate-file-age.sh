@@ -16,7 +16,6 @@ function validate_file_age() {
   else
      validate_file_age_result="new"
   fi
-
 }
 
 #Test
