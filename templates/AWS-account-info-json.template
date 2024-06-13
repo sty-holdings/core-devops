@@ -1,0 +1,5 @@
+{
+  "Profile_Name": "${AWS_PROFILE_NAME}",
+  "Region": "${AWS_REGION}",
+  "User_Pool_Id": "${AWS_USER_POOL_ID}"
+}

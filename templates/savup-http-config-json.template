@@ -1,0 +1,10 @@
+{
+	"Debug_Mode": $DEBUG_MODE,
+	"Environment": "$SERVER_ENVIRONMENT",
+	"Gin_Mode": "$GIN_MODE",
+	"Log_Directory": "/home/$SERVER_NAME/logs",
+	"Message_Prefix": "$NATS_MESSAGE_PREFIX",
+	"NATS_Creds_FQN": "/home/$SERVER_NAME/.certs/$NATS_KEY_FILENAME",
+	"NATS_URL": "$NATS_URL",
+	"PID_Directory": "/home/$SERVER_NAME/.run"
+}

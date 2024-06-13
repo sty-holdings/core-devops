@@ -1,0 +1,18 @@
+{
+  "description": "",
+  "url": "nats://$INSTANCE_DNS_IPV4:$NATS_PORT",
+  "token": "",
+  "user": "",
+  "password": "",
+  "creds": "/home/$WORKING_AS/.local/share/nats/nsc/keys/creds/$NATS_OPERATOR/$NATS_ACCOUNT/$NATS_ACCOUNT_USER.creds",
+  "nkey": "",
+  "ca": "$NATS_INSTALL_DIRECTORY/.certs/CAbundle.crt",
+  "cert": "$NATS_INSTALL_DIRECTORY/.certs/STAR_savup_com.crt",
+  "key": "$NATS_INSTALL_DIRECTORY/.keys/savup.com.key",
+  "nsc": "nsc://$NATS_OPERATOR/$NATS_ACCOUNT/$NATS_ACCOUNT_USER",
+  "jetstream_domain": "",
+  "jetstream_api_prefix": "",
+  "jetstream_event_prefix": "",
+  "inbox_prefix": "",
+  "user_jwt": ""
+}

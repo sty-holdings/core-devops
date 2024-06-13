@@ -9,22 +9,41 @@ set -eo pipefail
     # shellcheck disable=SC2029
     # shellcheck disable=SC2154
 function create_directories() {
+    local identity=$1
+    local ssh_user=$2
+    local dns_ipv4=$3
+    local system_user=$4
+    export install_directory=$5 # This is a local variable, but envsubst only works with environment variable, so it must be exported.
+    export service_user_name=$6 # This is a local variable, but envsubst only works with environment variable, so it must be exported.
 
-    find_remote_directory "$IDENTITY" $WORKING_AS $INSTANCE_DNS_IPV4 /home/$SERVER_NAME bin
+#    echo
+#    echo identity=$identity
+#    echo ssh_user=$ssh_user
+#    echo dns_ipv4=$dns_ipv4
+#    echo server_name=$server_name
+#    echo install_directory=$install_directory
+#    echo service_user_name=$service_user_name
+#    echo
+
+    # shellcheck disable=SC2086
+    find_remote_directory "$identity" $ssh_user $dns_ipv4 /home/$system_user bin
     if [ "$find_remote_directory_result" == "missing" ]; then
       echo "Creating directories."
-      ssh $IDENTITY $WORKING_AS@$INSTANCE_DNS_IPV4 "sudo mkdir /home/$SERVER_NAME/.config/ /home/$SERVER_NAME/.run/ /home/$SERVER_NAME/bin/ /home/$SERVER_NAME/logs/ /home/$SERVER_NAME/scripts/"
+      # shellcheck disable=SC2086
+      ssh $identity $ssh_user@$dns_ipv4 "sudo mkdir /home/$system_user/.config/ /home/$system_user/.run/ /home/$system_user/bin/ /home/$system_user/logs/ /home/$system_user/scripts/"
     else
       echo "Directories already exist."
     fi
     echo "Setting ownership."
-    ssh $IDENTITY $WORKING_AS@$INSTANCE_DNS_IPV4 "sudo chown -R $WORKING_AS /home/$SERVER_NAME/.config/ /home/$SERVER_NAME/.run/ /home/$SERVER_NAME/bin/ /home/$SERVER_NAME/logs/ /home/$SERVER_NAME/scripts/"
+    # shellcheck disable=SC2086
+    ssh $identity $ssh_user@$dns_ipv4 "sudo chown -R $ssh_user /home/$system_user/.config/ /home/$system_user/.run/ /home/$system_user/bin/ /home/$system_user/logs/ /home/$system_user/scripts/"
     echo "Setting permissions."
-    ssh $IDENTITY $WORKING_AS@$INSTANCE_DNS_IPV4 "sudo chmod -R  770 /home/$SERVER_NAME/.config/ /home/$SERVER_NAME/.run/ /home/$SERVER_NAME/bin/ /home/$SERVER_NAME/logs/ /home/$SERVER_NAME/scripts/"
+    # shellcheck disable=SC2086
+    ssh $identity $ssh_user@$dns_ipv4 "sudo chmod -R  770 /home/$system_user/.config/ /home/$system_user/.run/ /home/$system_user/bin/ /home/$system_user/logs/ /home/$system_user/scripts/"
 }
 
 # Test
-#export IDENTITY="-i /Users/syacko/.ssh/savup-local-0030"
+#export identity="-i /Users/syacko/.ssh/savup-local-0030"
 #export WORKING_AS=savup
 #export INSTANCE_DNS_IPV4=154.12.225.56
 #export NATS_WEBSOCKET_PORT

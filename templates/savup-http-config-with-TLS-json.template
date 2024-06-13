@@ -1,0 +1,15 @@
+{
+	"Debug_Mode": $DEBUG_MODE,
+	"Environment": "$SERVER_ENVIRONMENT",
+	"Gin_Mode": "$GIN_MODE",
+	"Log_Directory": "/home/$SERVER_NAME/logs",
+	"Message_Prefix": "$NATS_MESSAGE_PREFIX",
+	"NATS_Creds_FQN": "/home/$SERVER_NAME/.keys/$NATS_KEY_FILENAME",
+	"NATS_URL": "$NATS_URL",
+	"PID_Directory": "/home/$SERVER_NAME/.run",
+	"TLS": {
+		"TLS_CABundle_FQN": "/home/$SERVER_NAME/.certs/$CA_BUNDLE_FILENAME",
+		"TLS_Certificate_FQN": "/home/$SERVER_NAME/.certs/$CERT_FILENAME",
+		"TLS_Private_Key_FQN": "/home/$SERVER_NAME/.certs/$CERT_KEY_FILENAME"
+	}
+}

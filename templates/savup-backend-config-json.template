@@ -1,0 +1,17 @@
+{
+	"Authenticator_Service": "$AUTHENTICATOR_SERVICE",
+	"AWS_Info_FQN": "/home/$SERVER_NAME/.config/$AWS_ACCOUNT_INFO_FILENAME",
+	"Debug_Mode": $DEBUG_MODE,
+	"Firebase_Project_Id": "$FIREBASE_PROJECT_ID",
+	"Firebase_Credentials_FQN": "/home/$SERVER_NAME/.keys/$FIREBASE_KEY_FILENAME",
+	"GCP_Credentials_FQN": "/home/$SERVER_NAME/.keys/$GCP_KEY_FILENAME",
+	"Log_Directory": "/home/$SERVER_NAME/logs",
+	"Environment": "$SERVER_ENVIRONMENT",
+	"Message_Prefix": "$NATS_MESSAGE_PREFIX",
+	"NATS_Creds_FQN": "/home/$SERVER_NAME/.certs/$NATS_KEY_FILENAME",
+	"NATS_URL": "$NATS_URL",
+	"PID_Directory": "/home/$SERVER_NAME/.run",
+	"SendGrid_Key_FQN": "/home/$SERVER_NAME/.keys/$SENDGRID_KEY_FILENAME",
+	"SendGrid_Template_Ids": {"ids": {"bank": "$SENDGRID_TEMPLATE_ID_BANK","transferIn": "$SENDGRID_TEMPLATE_ID_TRANSFER_IN","transferOut": "$SENDGRID_TEMPLATE_ID_TRANSFER_OUT","verify": "$SENDGRID_TEMPLATE_ID_VERIFY"}},
+	"Web_Root_Assets_URL": "https://storage.googleapis.com"
+}

@@ -1,0 +1,18 @@
+[Unit]
+Description=$SERVER_NAME Service
+After=network.target nats-server.service
+Requires=nats-server.service
+PartOf=nats-server.service
+StartLimitInterval=20
+StartLimitBurst=1
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=10
+User=$WORKING_AS
+
+ExecStart=/home/$SERVER_NAME/bin/$SERVER_NAME -c /home/$SERVER_NAME/.config/$SERVER_NAME.conf
+
+[Install]
+WantedBy=default.target
