@@ -32,7 +32,6 @@ set -eo pipefail
 . core-devops/scripts/install-FIREBASE-key-info.sh
 . core-devops/scripts/install-GCP-key-info.sh
 . core-devops/scripts/install-local-instance-alias.sh
-. core-devops/scripts/install-NATS-key.sh
 . core-devops/scripts/install-SENDGRID-key-info.sh
 . core-devops/scripts/install-binary.sh
 . core-devops/scripts/install-cheat-sheet.sh
