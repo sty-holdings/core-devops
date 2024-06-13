@@ -16,14 +16,14 @@ function create_directories() {
     local owner_user=$5
     local permissions=$6
 
-    echo
-    echo ssh_connection="$ssh_connection"
-    echo system_user="$system_user"
-    echo directory_root="$directory_root"
-    echo directory_name="$directory_name"
-    echo owner_user="$owner_user"
-    echo permissions="$permissions"
-    echo
+#    echo
+#    echo ssh_connection="$ssh_connection"
+#    echo system_user="$system_user"
+#    echo directory_root="$directory_root"
+#    echo directory_name="$directory_name"
+#    echo owner_user="$owner_user"
+#    echo permissions="$permissions"
+#    echo
 
     # shellcheck disable=SC2086
     find_remote_directory "$ssh_connection" $directory_root $directory_name
@@ -43,10 +43,10 @@ function create_directories() {
 }
 
 # Test
-. find-directory.sh
-create_directories "-i /Users/syacko/.ssh/styh-local-0030 styh@local.sty-holdings.net" \
-styh \
-"/home/styh" \
-"test-create" \
-"styh-nats" \
-"777"
+#. find-directory.sh
+#create_directories "-i /Users/syacko/.ssh/styh-local-0030 styh@local.sty-holdings.net" \
+#styh \
+#"/home/styh" \
+#"test-create" \
+#"styh-nats" \
+#"777"
