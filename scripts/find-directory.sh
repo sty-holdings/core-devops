@@ -55,7 +55,7 @@ function find_remote_directory() {
 }
 
 # Test
-find_remote_directory "-i /Users/syacko/.ssh/styh-local-0030 styh@local.sty-holdings.net" \
-"/home/styh" \
-"test-create"
-echo "find_remote_directory_result=$find_remote_directory_result"
+#find_remote_directory "-i /Users/syacko/.ssh/styh-local-0030 styh@local.sty-holdings.net" \
+#"/home/styh" \
+#"test-create"
+#echo "find_remote_directory_result=$find_remote_directory_result"

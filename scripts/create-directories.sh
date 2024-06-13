@@ -10,15 +10,13 @@ set -eo pipefail
     # shellcheck disable=SC2154
 function create_directories() {
     local ssh_connection=$1
-    local system_user=$2
-    local directory_root=$3
-    local directory_name=$4
-    local owner_user=$5
-    local permissions=$6
+    local directory_root=$2
+    local directory_name=$3
+    local owner_user=$4
+    local permissions=$5
 
 #    echo
 #    echo ssh_connection="$ssh_connection"
-#    echo system_user="$system_user"
 #    echo directory_root="$directory_root"
 #    echo directory_name="$directory_name"
 #    echo owner_user="$owner_user"
