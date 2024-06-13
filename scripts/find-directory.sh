@@ -38,29 +38,24 @@ function find_directory() {
 #echo "\$find_string_in_file_result=$find_string_in_file_result"
 
 function find_remote_directory() {
-  local identity=$1
-  local user=$2
-  local dns_ip=$3
-  local search_directory=$4
-  local directory=$5
+  local ssh_connection=$1
+  local search_directory=$2
+  local directory=$3
   set find_remote_directory_result
 
 #  echo
-#  echo "identity=$identity"
-#  echo "user=$user"
-#  echo "dns_ip=$dns_ip"
+#  echo "ssh_connection=$ssh_connection"
 #  echo "search_directory=$search_directory"
 #  echo "file=$directory"
 #  echo
 
   # shellcheck disable=SC2034
-  find_remote_directory_result=$(ssh $identity $user@$dns_ip "if [ \$(find $search_directory -type d -name $directory -print -quit) ]; then echo 'found'; else echo 'missing'; fi")
+  # shellcheck disable=SC2029
+  find_remote_directory_result=$(ssh $ssh_connection "if [ \$(find $search_directory -type d -name $directory -print -quit) ]; then echo 'found'; else echo 'missing'; fi")
 }
 
 # Test
-#export SERVER_NAME=savup-http
-#find_remote_directory '-i /Users/syacko/.ssh/savup-local-0030' savup 154.12.225.56 /home/$SERVER_NAME bin
-#echo $find_remote_directory_result
-#echo '========'
-#find_remote_directory '-i /Users/syacko/.ssh/savup-local-0030' savup 154.12.225.56 '/home' 'BILL'
-#echo $find_remote_directory_result
+find_remote_directory "-i /Users/syacko/.ssh/styh-local-0030 styh@local.sty-holdings.net" \
+"/home/styh" \
+"test-create"
+echo "find_remote_directory_result=$find_remote_directory_result"
