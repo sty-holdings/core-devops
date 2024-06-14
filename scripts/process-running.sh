@@ -32,7 +32,7 @@ function process_running() {
 #  echo "exclude_string=$exclude_string"
 #  echo
 
-  ssh $ssh_connection "ps aux > /tmp/processes.tmp"
+  ssh "$ssh_connection" "ps aux > /tmp/processes.tmp"
 
   echo "here"
 
