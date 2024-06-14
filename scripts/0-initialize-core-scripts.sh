@@ -51,7 +51,7 @@ set -eo pipefail
 . core-devops/scripts/validate-AWS-creds.sh
 . core-devops/scripts/validate-file-age.sh
 . core-devops/scripts/validate-NATS-account-user.sh
-. core-devops/scripts/validate-NATS-key.sh
+. core-devops/scripts/validate-NATS-creds-parameter.sh
 . core-devops/scripts/validate-semantic-version.sh
 . core-devops/scripts/validate-server-environment.sh
 . core-devops/scripts/validate-system-user-parent-group.sh
