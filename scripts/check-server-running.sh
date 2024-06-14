@@ -7,18 +7,16 @@ set -eo pipefail
 
 # Main function of this script
 function check_server_running() {
-  local ssh_connection=$1
-  local process_name=$2
-  local action_if=$3
+  local process_name=$1
+  local action_if=$2
 
 #  echo "check"
-#  echo "ssh_connection=$ssh_connection"
 #  echo "process_name=$process_name"
 #  echo "action_if=$action_if"
 #  echo
 
   display_info "Checking to see if $process_name is running."
-  process_running "$ssh_connection" $process_name 'journalctl' # Check to see if server is running on remote server
+  process_running $process_name 'journalctl' # Check to see if server is running on remote server
   # shellcheck disable=SC2154
   if [ "$process_running_result" == 'found' ]; then
     if [ "$action_if" == "running" ]; then

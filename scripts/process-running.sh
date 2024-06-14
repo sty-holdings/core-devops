@@ -22,24 +22,21 @@
 set -eo pipefail
 
 function process_running() {
-  local ssh_identity=$1
-  local ssh_server_user=$2
-  local process_name=$3
-  local exclude_string=$4
+  local process_name=$1
+  local exclude_string=$2
 
   echo "process"
-  echo "ssh_identity=$ssh_identity"
-  echo "ssh_server_user=$ssh_server_user"
 #  echo "process_name=$process_name"
 #  echo "exclude_string=$exclude_string"
 #  echo
 
 
-  ssh "$ssh_identity" "$ssh_server_user" "ps aux > /tmp/processes.tmp"
+  # shellcheck disable=SC2154
+  ssh "$build_ssh_identity_result" "$build_ssh_server_user_result" "ps aux > /tmp/processes.tmp"
 
   echo "here"
 
-  find_string_excluding_remote_file "$ssh_identity" "$ssh_server_user" $process_name $exclude_string "/tmp/processes.tmp"
+  find_string_excluding_remote_file $process_name $exclude_string "/tmp/processes.tmp"
   # shellcheck disable=SC2034
   # shellcheck disable=SC2154
   process_running_result=$find_string_excluding_remote_file_result

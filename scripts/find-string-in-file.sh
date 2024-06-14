@@ -43,10 +43,8 @@ function find_string_in_file() {
 
 # shellcheck disable=SC2029
 function find_string_in_remote_file() {
-  local ssh_identity=$1
-  local ssh_server_user=$2
-  local search_string=$2
-  local file=$3
+  local search_string=$1
+  local file=$2
   set find_string_in_remote_file_result
 
 #  echo
@@ -55,7 +53,8 @@ function find_string_in_remote_file() {
 #  echo
 
   # shellcheck disable=SC2034
-  find_string_in_remote_file_result=$(ssh "$ssh_identity" "$ssh_server_user" "grep -q '$search_string' $file && echo 'found' || echo 'missing'")
+  # shellcheck disable=SC2154
+  find_string_in_remote_file_result=$(ssh "$build_ssh_identity_result" "$build_ssh_server_user_result" "grep -q '$search_string' $file && echo 'found' || echo 'missing'")
 }
 
 # Test

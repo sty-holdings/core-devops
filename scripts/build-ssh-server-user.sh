@@ -19,7 +19,7 @@ function build_ssh_server_user() {
 #    echo
 
    # shellcheck disable=SC2034
-   build_ssh_server_user_result="$ssh_user@$ssh_dns_ip"
+   export build_ssh_server_user_result="$ssh_user@$ssh_dns_ip"
 }
 
 # Test
