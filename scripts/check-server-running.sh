@@ -9,14 +9,23 @@ set -eo pipefail
 function check_server_running() {
   local process_name=$1
   local action_if=$2
+  local exclude_string=$3
 
 #  echo "check"
 #  echo "process_name=$process_name"
 #  echo "action_if=$action_if"
+#  echo "exclude_string=$exclude_string"
 #  echo
 
   display_info "Checking to see if $process_name is running."
-  process_running $process_name 'journalctl' # Check to see if server is running on remote server
+#  process_running $process_name 'journalctl' # Check to see if server is running on remote server
+    # shellcheck disable=SC2154
+    ssh "$build_ssh_identity_result" "$build_ssh_server_user_result" "ps aux > /tmp/processes.tmp"
+
+    echo "here"
+
+    find_string_excluding_remote_file $process_name $exclude_string "/tmp/processes.tmp"
+
   # shellcheck disable=SC2154
   if [ "$process_running_result" == 'found' ]; then
     if [ "$action_if" == "running" ]; then
