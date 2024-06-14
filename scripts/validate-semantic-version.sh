@@ -21,12 +21,18 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-function validate_semantic {
+function validate_semantic_version {
+  local version=$1
   local count=1
   local nodeCount=0
+
+#  echo
+#  echo "version=$version"
+#  echo
+
   re='^[0-9]+$'
   IFS="."
-  for node in ${1}; do
+  for node in $version; do
     if ! [[ $node =~ $re ]]; then
       break
     fi
@@ -38,31 +44,33 @@ function validate_semantic {
   done
 
   if [[ $count -eq 4 ]]; then
-    validate_semantic_result='ok' # Valid semantic number
+    validate_semantic_version_result='ok' # Valid semantic number
   else
     # shellcheck disable=SC2034
-    validate_semantic_result='failed'
+    validate_semantic_version_result='failed'
   fi
 }
 
 # Test
-#result=$(validate_semantic 2023)
-#echo $result
-#result=$(validate_semantic 2023.0)
-#echo $result
-#result=$(validate_semantic 2023..0)
-#echo $result
-#result=$(validate_semantic 99999.0.0)
-#echo $result
-#result=$(validate_semantic 2023.99999.0)
-#echo $result
-#result=$(validate_semantic 2023.9999.99999)
-#echo $result
-#result=$(validate_semantic 2023.9999.aa)
-#echo $result
-#result=$(validate_semantic 2023.aa.99)
-#echo $result
-#result=$(validate_semantic aa.99.99)
-#echo $result
-#result=$(validate_semantic 99.99.99)
-#echo $result
+#validate_semantic_version 2023
+#echo "validate_semantic_version_result=$validate_semantic_version_result"
+#validate_semantic_version 2023.0
+#echo "validate_semantic_version_result=$validate_semantic_version_result"
+#validate_semantic_version 2023..0
+#echo "validate_semantic_version_result=$validate_semantic_version_result"
+#validate_semantic_version 99999.0.0
+#echo "validate_semantic_version_result=$validate_semantic_version_result"
+#validate_semantic_version 2023.99999.0
+#echo "validate_semantic_version_result=$validate_semantic_version_result"
+#validate_semantic_version 2023.9999.99999
+#echo "validate_semantic_version_result=$validate_semantic_version_result"
+#validate_semantic_version 2023.9999.aa
+#echo "validate_semantic_version_result=$validate_semantic_version_result"
+#validate_semantic_version 2023.aa.99
+#echo "validate_semantic_version_result=$validate_semantic_version_result"
+#validate_semantic_version aa.99.99
+#echo "validate_semantic_version_result=$validate_semantic_version_result"
+#validate_semantic_version 99.99.99
+#echo "validate_semantic_version_result=$validate_semantic_version_result"
+#validate_semantic_version 2024.10.99
+#echo "validate_semantic_version_result=$validate_semantic_version_result"
