@@ -8,7 +8,7 @@ set -eo pipefail
 # Main function of this script
     # shellcheck disable=SC2029
     # shellcheck disable=SC2154
-function create_directories() {
+function create_directory() {
     local ssh_connection=$1
     local directory_root=$2
     local directory_name=$3

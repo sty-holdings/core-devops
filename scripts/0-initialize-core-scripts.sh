@@ -13,7 +13,7 @@ set -eo pipefail
 . core-devops/scripts/build-ssh-server-user.sh
 . core-devops/scripts/check-server-running.sh
 . core-devops/scripts/clear-journalctl.sh
-. core-devops/scripts/create-directories.sh
+. core-devops/scripts/create-directory.sh
 . core-devops/scripts/display-alert-msg.sh
 . core-devops/scripts/display-daemon-commands.sh
 . core-devops/scripts/display-error.sh
