@@ -21,6 +21,8 @@
 
 function build_ssh_identity() {
   local ssh_identity_filename=$1
+  set build_ssh_identity_result
 
-  export IDENTITY="-i $ssh_identity_filename"
+  # shellcheck disable=SC2034
+  build_ssh_identity_result="-i $ssh_identity_filename"
 }
