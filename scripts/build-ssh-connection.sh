@@ -28,4 +28,4 @@ function build_ssh_connection() {
 #build_ssh_connection "-i /Users/syacko/.ssh/styh-local-0030" \
 #styh \
 #"local.sty-holdings.net"
-#echo "build_ssh_connection=$build_ssh_connection"
+#echo "build_ssh_connection_result=$build_ssh_connection_result"
