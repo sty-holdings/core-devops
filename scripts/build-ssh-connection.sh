@@ -21,7 +21,7 @@ function build_ssh_connection() {
 #    echo
 
    # shellcheck disable=SC2034
-   build_ssh_connection_result="$ssh_identity_filename $ssh_user@$ssh_dns_ip"
+   build_ssh_connection_result="-i $ssh_identity_filename $ssh_user@$ssh_dns_ip"
 }
 
 # Test
