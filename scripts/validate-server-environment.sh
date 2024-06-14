@@ -18,7 +18,7 @@ function validate_server_environment() {
   production)
     ;;
   *)
-    validate_server_environment_result='failed'
+    validate_server_environment_result="failed"
     display_error "The SERVER_ENVIRONMENT must be provided and be local, development, or production."
     ;;
   esac

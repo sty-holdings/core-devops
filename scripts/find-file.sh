@@ -52,6 +52,7 @@ function find_remote_file() {
   #  echo "file=$file"
 
   # shellcheck disable=SC2034
+  # shellcheck disable=SC2029
   find_remote_file_result=$(ssh $identity $user@$dns_ip "if [ \"\$(find $search_directory -type f -name '$file' -print -quit)\" ]; then echo 'found'; else echo 'missing'; fi")
 }
 
