@@ -71,7 +71,7 @@ function find_string_excluding_remote_file() {
   local file=$4
   set find_string_excluding_remote_file_result
 
-  echo
+  echo "string"
   echo "ssh_connection=$ssh_connection"
   echo "search_string=$search_string"
   echo "exclude_string=$exclude_string"

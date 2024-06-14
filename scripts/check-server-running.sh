@@ -11,7 +11,7 @@ function check_server_running() {
   local process_name=$2
   local action_if=$3
 
-  echo
+  echo "check"
   echo "ssh_connection=$ssh_connection"
   echo "process_name=$process_name"
   echo "action_if=$action_if"
