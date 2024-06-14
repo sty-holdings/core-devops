@@ -28,9 +28,9 @@ function process_running() {
 
   echo "process"
   echo "ssh_connection=$ssh_connection"
-  echo "process_name=$process_name"
-  echo "exclude_string=$exclude_string"
-  echo
+#  echo "process_name=$process_name"
+#  echo "exclude_string=$exclude_string"
+#  echo
 
   ssh $ssh_connection "ps aux > /tmp/processes.tmp"
 
