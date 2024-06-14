@@ -43,19 +43,19 @@ function find_string_in_file() {
 
 # shellcheck disable=SC2029
 function find_string_in_remote_file() {
-  local ssh_connection=$1
+  local ssh_identity=$1
+  local ssh_server_user=$2
   local search_string=$2
   local file=$3
   set find_string_in_remote_file_result
 
 #  echo
-#  echo "ssh_connection=$ssh_connection"
 #  echo "search_string=$search_string"
 #  echo "file=$file"
 #  echo
 
   # shellcheck disable=SC2034
-  find_string_in_remote_file_result=$(ssh $ssh_connection "grep -q '$search_string' $file && echo 'found' || echo 'missing'")
+  find_string_in_remote_file_result=$(ssh "$ssh_identity" "$ssh_server_user" "grep -q '$search_string' $file && echo 'found' || echo 'missing'")
 }
 
 # Test
@@ -65,21 +65,22 @@ function find_string_in_remote_file() {
 #echo "find_string_in_remote_file_result=$find_string_in_remote_file_result"
 
 function find_string_excluding_remote_file() {
-  local ssh_connection=$1
-  local search_string=$2
+  local ssh_identity=$1
+  local ssh_server_user=$2
   local exclude_string=$3
   local file=$4
   set find_string_excluding_remote_file_result
 
   echo "string"
-  echo "ssh_connection=$ssh_connection"
+  echo "ssh_identity=$ssh_identity"
+  echo "ssh_server_user=$ssh_server_user"
   echo "search_string=$search_string"
   echo "exclude_string=$exclude_string"
   echo "file=$file"
   echo
 
   # shellcheck disable=SC2034
-  find_string_excluding_remote_file_result=$(ssh $ssh_connection "grep -q -E '$search_string | ^$exclude_string' $file && echo 'found' || echo 'missing'")
+  find_string_excluding_remote_file_result=$(ssh "$ssh_identity" "$ssh_server_user"  "grep -q -E '$search_string | ^$exclude_string' $file && echo 'found' || echo 'missing'")
 }
 
 # Test
