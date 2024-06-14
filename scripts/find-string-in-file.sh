@@ -43,55 +43,47 @@ function find_string_in_file() {
 
 # shellcheck disable=SC2029
 function find_string_in_remote_file() {
-  local identity=$1
-  local user=$2
-  local dns_ip=$3
-  local search_string=$4
-  local file=$5
+  local ssh_connection=$1
+  local search_string=$2
+  local file=$3
+  set find_string_in_remote_file_result
 
-#  echo "find_string_in_remote_file()"
-#  echo "identity=$identity"
-#  echo "user=$user"
-#  echo "dns_ip=$dns_ip"
+#  echo
+#  echo "ssh_connection=$ssh_connection"
 #  echo "search_string=$search_string"
 #  echo "file=$file"
+#  echo
 
-  # shellcheck disable=SC2086
-  find_string_in_remote_file_result=$(ssh $identity $user@$dns_ip "grep -q '$search_string' $file && echo 'found' || echo 'missing'")
+  # shellcheck disable=SC2034
+  find_string_in_remote_file_result=$(ssh $ssh_connection "grep -q '$search_string' $file && echo 'found' || echo 'missing'")
 }
 
 # Test
-#find_string_in_remote_file '-i /Users/syacko/.ssh/savup-local-0030' savup 154.12.225.56 'nats-server' '/tmp/processes.tmp'
-#echo "find nats-server:  $find_string_in_remote_file_result"
-#find_string_in_remote_file '-i /Users/syacko/.ssh/savup-local-0030' savup 154.12.225.56 'sshd:' '/tmp/processes.tmp'
-#echo "find sshd: $find_string_in_remote_file_result"
-#find_string_in_remote_file '-i /Users/syacko/.ssh/savup-local-0030' savup 154.12.225.56 $NATS_SYSTEM_USER '/etc/passwd'
-#echo "find sshd: $find_string_in_remote_file_result"
+#find_string_in_remote_file "-i /Users/syacko/.ssh/styh-local-0030 styh@local.sty-holdings.net" "nats-server" "/tmp/processes.tmp"
+#echo "find_string_in_remote_file_result=$find_string_in_remote_file_result"
+#find_string_in_remote_file "-i /Users/syacko/.ssh/styh-local-0030 styh@local.sty-holdings.net" "jack-fruit" "/tmp/processes.tmp"
+#echo "find_string_in_remote_file_result=$find_string_in_remote_file_result"
 
-# shellcheck disable=SC2029
-# shellcheck disable=SC2034
-function find_string_exclude_string_in_remote_file() {
-  local identity=$1
-  local user=$2
-  local dns_ip=$3
-  local search_string=$4
-  local exclude_string=$5
-  local file=$6
+function find_string_excluding_remote_file() {
+  local ssh_connection=$1
+  local search_string=$2
+  local exclude_string=$3
+  local file=$4
+  set find_string_excluding_remote_file_result
 
-  #  echo "identity=$identity"
-  #  echo "user=$user"
-  #  echo "dns_ip=$dns_ip"
-  #  echo "search_string=$search_string"
-  #  echo "exclude_string=$exclude_string"
-  #  echo "file=$file"
+  echo
+  echo "ssh_connection=$ssh_connection"
+  echo "search_string=$search_string"
+  echo "exclude_string=$exclude_string"
+  echo "file=$file"
+  echo
 
-  find_string_in_remote_file_result=$(ssh $identity $user@$dns_ip "grep -q -E '$search_string | ^$exclude_string' $file && echo 'found' || echo 'missing'")
+  # shellcheck disable=SC2034
+  find_string_excluding_remote_file_result=$(ssh $ssh_connection "grep -q -E '$search_string | ^$exclude_string' $file && echo 'found' || echo 'missing'")
 }
 
 # Test
-#find_string_in_remote_file '-i /Users/syacko/.ssh/savup-local-0030' savup 154.12.225.56 'nats-server' '/tmp/processes.tmp'
-#echo "find nats-server:  $find_string_in_remote_file_result"
-#find_string_in_remote_file '-i /Users/syacko/.ssh/savup-local-0030' savup 154.12.225.56 'sshd:' '/tmp/processes.tmp'
-#echo "find sshd: $find_string_in_remote_file_result"
-#find_string_in_remote_file '-i /Users/syacko/.ssh/savup-local-0030' savup 154.12.225.56 $NATS_SYSTEM_USER '/etc/passwd'
-#echo "find sshd: $find_string_in_remote_file_result"
+#find_string_excluding_remote_file "-i /Users/syacko/.ssh/styh-local-0030 styh@local.sty-holdings.net" "nats-server" "" "/tmp/processes.tmp"
+#echo "find_string_excluding_remote_file_result=$find_string_excluding_remote_file_result"
+#find_string_excluding_remote_file "-i /Users/syacko/.ssh/styh-local-0030 styh@local.sty-holdings.net" "jack-fruit" "" "/tmp/processes.tmp"
+#echo "find_string_excluding_remote_file_result=$find_string_excluding_remote_file_result"

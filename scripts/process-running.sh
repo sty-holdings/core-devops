@@ -21,31 +21,27 @@
 
 set -eo pipefail
 
-# shellcheck disable=SC2034
-# shellcheck disable=SC2154
 function process_running() {
-  local identity=$1
-  local user=$2
-  local dns_ip=$3
-  local process_name=$4
-  local exclude_string=$5
+  local ssh_connection=$1
+  local process_name=$2
+  local exclude_string=$3
 
-#  echo "identity=$identity"
-#  echo "user=$user"
-#  echo "dns_ip=$dns_ip"
+#  echo
+#  echo "ssh_connection=$ssh_connection"
 #  echo "process_name=$process_name"
 #  echo "exclude_string=$exclude_string"
+#  echo
 
-  # shellcheck disable=SC2086
-  ssh $identity $user@$dns_ip "ps aux > /tmp/processes.tmp"
-  # shellcheck disable=SC2086
-  find_string_exclude_string_in_remote_file "$identity" $user $dns_ip $process_name $exclude_string '/tmp/processes.tmp'
-  process_running_result=$find_string_in_remote_file_result
+  ssh $ssh_connection "ps aux > /tmp/processes.tmp"
+  find_string_excluding_remote_file "$ssh_connection" $process_name $exclude_string "/tmp/processes.tmp"
+  # shellcheck disable=SC2034
+  # shellcheck disable=SC2154
+  process_running_result=$find_string_excluding_remote_file_result
 }
 
 # Test
-#. /Users/syacko/workspace/styh-dev/src/albert/core/devops/scripts/find-string-in-file.sh
-#process_running "-i /Users/syacko/.ssh/savup-local-0030" savup savup-local-0030.savup.com 'nats-server'
-#echo "\$process_running_result=$process_running_result"
-#process_running "-i /Users/syacko/.ssh/savup-local-0030" savup savup-local-0030.savup.com 'sshd:'
-#echo "\$process_running_result=$process_running_result"
+#. find-string-in-file.sh
+#process_running "-i /Users/syacko/.ssh/styh-local-0030 styh@local.sty-holdings.net" 'nats-server'
+#echo "process_running_result=$process_running_result"
+#process_running "-i /Users/syacko/.ssh/styh-local-0030 styh@local.sty-holdings.net" 'jack-fruit'
+#echo "process_running_result=$process_running_result"
