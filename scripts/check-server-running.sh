@@ -19,6 +19,10 @@ function check_server_running() {
 
   display_info "Checking to see if $process_name is running."
 #  process_running $process_name 'journalctl' # Check to see if server is running on remote server
+# shellcheck disable=SC2154
+echo "build_ssh_identity_result=$build_ssh_identity_result"
+
+
     # shellcheck disable=SC2154
     ssh "$build_ssh_identity_result" "$build_ssh_server_user_result" "ps aux > /tmp/processes.tmp"
 
