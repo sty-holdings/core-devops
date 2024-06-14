@@ -26,11 +26,11 @@ function process_running() {
   local process_name=$2
   local exclude_string=$3
 
-#  echo
-#  echo "ssh_connection=$ssh_connection"
-#  echo "process_name=$process_name"
-#  echo "exclude_string=$exclude_string"
-#  echo
+  echo
+  echo "ssh_connection=$ssh_connection"
+  echo "process_name=$process_name"
+  echo "exclude_string=$exclude_string"
+  echo
 
   ssh $ssh_connection "ps aux > /tmp/processes.tmp"
   find_string_excluding_remote_file "$ssh_connection" $process_name $exclude_string "/tmp/processes.tmp"
