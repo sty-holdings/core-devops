@@ -8,7 +8,7 @@ set -eo pipefail
 . core-devops/scripts/are-cert-settings-valid.sh
 . core-devops/scripts/build-private-public-key.sh
 . core-devops/scripts/build-ssh-identity-filename.sh
-. core-devops/scripts/build-ssh-identity.sh
+. core-devops/scripts/build-ssh-connection.sh
 . core-devops/scripts/build-ssh-identity.sh
 . core-devops/scripts/check-server-running.sh
 . core-devops/scripts/clear-journalctl.sh
