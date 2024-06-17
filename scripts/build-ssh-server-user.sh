@@ -11,7 +11,6 @@ set -eo pipefail
 function build_ssh_server_user() {
     local ssh_user=$1
     local ssh_dns_ip=$2
-    set build_ssh_server_user_result
 
 #    echo
 #    echo ssh_user="$ssh_user"
@@ -19,10 +18,10 @@ function build_ssh_server_user() {
 #    echo
 
    # shellcheck disable=SC2034
-   export build_ssh_server_user_result="$ssh_user@$ssh_dns_ip"
+   export SSH_SERVER_USER="$ssh_user@$ssh_dns_ip"
 }
 
 # Test
-#build_ssh_server_user styh \
-#"local.sty-holdings.net"
-#echo "build_ssh_server_user_result=$build_ssh_server_user_result"
+build_ssh_server_user styh \
+"local.sty-holdings.net"
+echo "SSH_SERVER_USER=$SSH_SERVER_USER"

@@ -24,7 +24,7 @@ echo "build_ssh_identity_result=$build_ssh_identity_result"
 
 
     # shellcheck disable=SC2154
-    ssh "$build_ssh_identity_result" "$build_ssh_server_user_result" "ps aux > /tmp/processes.tmp"
+    ssh "$build_ssh_identity_result" "ps aux > /tmp/processes.tmp"
 
     echo "here"
 

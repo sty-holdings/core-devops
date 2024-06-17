@@ -21,8 +21,11 @@
 
 function build_ssh_identity() {
   local ssh_identity_filename=$1
-  set build_ssh_identity_result
 
   # shellcheck disable=SC2034
-  export build_ssh_identity_result="-i $ssh_identity_filename"
+  export SSH_IDENTITY="-i $ssh_identity_filename"
 }
+
+#Test
+build_ssh_identity "/Users/syacko/.ssh/styh-local-0030"
+echo "SSH_IDENTITY=$SSH_IDENTITY"
