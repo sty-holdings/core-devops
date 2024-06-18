@@ -70,13 +70,13 @@ function find_string_excluding_remote_file() {
   local file=$4
   set find_string_excluding_remote_file_result
 
-  echo "string"
-  echo "ssh_identity=$ssh_identity"
-  echo "ssh_server_user=$ssh_server_user"
-  echo "search_string=$search_string"
-  echo "exclude_string=$exclude_string"
-  echo "file=$file"
-  echo
+#  echo "string"
+#  echo "ssh_identity=$ssh_identity"
+#  echo "ssh_server_user=$ssh_server_user"
+#  echo "search_string=$search_string"
+#  echo "exclude_string=$exclude_string"
+#  echo "file=$file"
+#  echo
 
   # shellcheck disable=SC2034
   find_string_excluding_remote_file_result=$(ssh "$ssh_identity" "$ssh_server_user"  "grep -q -E '$search_string | ^$exclude_string' $file && echo 'found' || echo 'missing'")
