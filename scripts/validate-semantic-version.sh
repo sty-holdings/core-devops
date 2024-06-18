@@ -45,11 +45,9 @@ function validate_semantic_version {
 
   if [[ $count -eq 4 ]]; then
     validate_semantic_version_result='ok' # Valid semantic number
-    exit 0
   else
     # shellcheck disable=SC2034
     validate_semantic_version_result='failed'
-    exit 1
   fi
 }
 
@@ -70,9 +68,9 @@ function validate_semantic_version {
 #echo "validate_semantic_version_result=$validate_semantic_version_result"
 #validate_semantic_version 2023.aa.99
 #echo "validate_semantic_version_result=$validate_semantic_version_result"
-#validate_semantic_version aa.99.99
-#echo "validate_semantic_version_result=$validate_semantic_version_result"
-#validate_semantic_version 99.99.99
-#echo "validate_semantic_version_result=$validate_semantic_version_result"
+validate_semantic_version aa.99.99
+echo "validate_semantic_version_result=$validate_semantic_version_result"
+validate_semantic_version 99.99.99
+echo "validate_semantic_version_result=$validate_semantic_version_result"
 #validate_semantic_version 2024.10.99
 #echo "validate_semantic_version_result=$validate_semantic_version_result"
