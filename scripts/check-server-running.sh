@@ -50,13 +50,13 @@ function check_server_running() {
 }
 
 #Test
-. display-error.sh
-. display-info.sh
-. display-spacer.sh
-. process-running.sh
-. find-string-in-file.sh
-cat  /Users/syacko/.ssh/styh-local-0030
-export SSH_IDENTITY_FILENAME="/Users/syacko/.ssh/styh-local-0030"
-export SSH_SERVER_USER="styh@local.sty-holdings.net"
-check_server_running "nats-server" "running"
-check_server_running "jack-fruit" "running"
+#. display-error.sh
+#. display-info.sh
+#. display-spacer.sh
+#. process-running.sh
+#. find-string-in-file.sh
+#cat  /Users/syacko/.ssh/styh-local-0030
+#export SSH_IDENTITY_FILENAME="/Users/syacko/.ssh/styh-local-0030"
+#export SSH_SERVER_USER="styh@local.sty-holdings.net"
+#check_server_running "nats-server" "running"
+#check_server_running "jack-fruit" "running"
