@@ -22,6 +22,6 @@ function build_ssh_server_user() {
 }
 
 # Test
-build_ssh_server_user styh \
-"local.sty-holdings.net"
-echo "SSH_SERVER_USER=$SSH_SERVER_USER"
+#build_ssh_server_user styh \
+#"local.sty-holdings.net"
+#echo "SSH_SERVER_USER=$SSH_SERVER_USER"
