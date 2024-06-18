@@ -24,7 +24,7 @@ function build_ssh_connection() {
 }
 
 # Test
-build_ssh_connection "/Users/syacko/.ssh/styh-local-0030" \
-styh \
-"local.sty-holdings.net"
-echo "SSH_CONNECTION=$SSH_CONNECTION"
+#build_ssh_connection "/Users/syacko/.ssh/styh-local-0030" \
+#styh \
+#"local.sty-holdings.net"
+#echo "SSH_CONNECTION=$SSH_CONNECTION"

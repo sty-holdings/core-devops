@@ -27,5 +27,5 @@ function build_ssh_identity() {
 }
 
 #Test
-build_ssh_identity "/Users/syacko/.ssh/styh-local-0030"
-echo "SSH_IDENTITY=$SSH_IDENTITY"
+#build_ssh_identity "/Users/syacko/.ssh/styh-local-0030"
+#echo "SSH_IDENTITY=$SSH_IDENTITY"
