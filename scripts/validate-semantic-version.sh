@@ -45,11 +45,11 @@ function validate_semantic_version {
 
   if [[ $count -eq 4 ]]; then
     validate_semantic_version_result='ok' # Valid semantic number
-    return 0
+    exit 0
   else
     # shellcheck disable=SC2034
     validate_semantic_version_result='failed'
-    return 1
+    exit 1
   fi
 }
 
