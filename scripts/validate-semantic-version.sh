@@ -68,9 +68,9 @@ function validate_semantic_version {
 #echo "validate_semantic_version_result=$validate_semantic_version_result"
 #validate_semantic_version 2023.aa.99
 #echo "validate_semantic_version_result=$validate_semantic_version_result"
-validate_semantic_version aa.99.99
-echo "validate_semantic_version_result=$validate_semantic_version_result"
-validate_semantic_version 99.99.99
-echo "validate_semantic_version_result=$validate_semantic_version_result"
+#validate_semantic_version aa.99.99
+#echo "validate_semantic_version_result=$validate_semantic_version_result"
+#validate_semantic_version 99.99.99
+#echo "validate_semantic_version_result=$validate_semantic_version_result"
 #validate_semantic_version 2024.10.99
 #echo "validate_semantic_version_result=$validate_semantic_version_result"
